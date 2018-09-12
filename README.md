@@ -34,3 +34,5 @@ Hint: You could get a list of all available methods of the math module with dir(
 
 all the usefull libraries and functions for web automation selenium is availble in the file selenium.
 
+## Finished courses and bootcamps
+1- Web scraping using Selenium,Beautifulsoup,Request udemy
