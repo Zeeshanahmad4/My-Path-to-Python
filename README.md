@@ -1,4 +1,4 @@
-# My Path to Python
+# My Path to Python Programing
 How i learn python with the descripion, pathway and links of the resources. 
 
 #Handling files I/O ,csv 
@@ -27,3 +27,10 @@ Expected output:
 Hint: You could get a list of all available methods of the math module with dir(math) and see whether cosine is there or not.
 
 # 2
+
+
+
+## Selenium
+
+all the usefull libraries and functions for web automation selenium is availble in the file selenium.
+
