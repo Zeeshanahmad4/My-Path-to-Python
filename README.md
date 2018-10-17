@@ -1,9 +1,7 @@
-# My Path to Python Programing
-How i learn python with the descripion, pathway and links of the resources. 
+# My Path to Problem solving(Templates)
+following are the templates/referance code for future referance 
 
 #Handling files I/O ,csv 
-
-
 
 i learn learn it from [here](https://github.com/codingforentrepreneurs/30-Days-of-Python/blob/master/PythonCheatSheet.md)
 , [here](https://github.com/codingforentrepreneurs/30-Days-of-Python/tree/master/Day%2015/hungrypy)
@@ -11,6 +9,12 @@ i learn learn it from [here](https://github.com/codingforentrepreneurs/30-Days-o
 and
 [here](https://chrisalbon.com/python/data_wrangling/pandas_dataframe_importing_csv/)
 
+# Data Handling
+1.Data cleaning
+
+# Machine Learning
+1.Genral
+2.logistic regresion
 
 
 # best programing practice 
