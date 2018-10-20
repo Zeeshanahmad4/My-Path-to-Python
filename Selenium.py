@@ -40,3 +40,13 @@ urllib.urlretrieve(src, "filename.png")
 
 
 
+
+
+#Handling extensions in browser
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+coptions = Options()
+coptions.add_extension("path/to/extension/file.crx")
+driver = webdriver.Chrome(chrome_options=coptions)
+
