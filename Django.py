@@ -28,3 +28,7 @@ django-admin startproject project_name #starting your first project
 
 
 python3 manage.py runserver #run this to see your project on server make sure you are in right directory
+
+
+
+python3 manage.py startapp nameofapp #running first app
