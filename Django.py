@@ -58,6 +58,32 @@ from firstapp import views
 urlpatterns = [
     url(r'^$', views.index, name='index'),
 ]
-done url mapping is complete your new url for this app is http://127.0.0.1:8000/mynewextension/
+#done url mapping is complete your new url for this app is http://127.0.0.1:8000/mynewextension/
+  
+  
+  
+  
+  
+ #making new templates and templates tags
+ 
+ #steps 
+       #1-creating a dict name "Tamplates" in the same dic in which project and first_app is held and put index.html file there
+       #2-enter the details in project setting.py about your templates injecting code in the setting.py
+  import os
+  TEMPLATES_DIR = os.path.join (BASE_DIR,"templates")
+  
+  'DIRS': [TEMPLATES_DIR,]#in Templates in setting.py file 
+      #3-comeback to views.py of firs_app inject code
+    
+def index(request):
+    my_dict = {'insert_me':"hello i am from ttemplates firstapp index"}#this is the templates variable i.e dynamic content
+    return render(request,'first_app/index.html',context=my_dict)
+  #4-in the templates index.htnml insert the template variables in the body of html as
+  {{ insert_me }}#syntax of templates variables
+  
+  
+  
+    
+ 
 
 
