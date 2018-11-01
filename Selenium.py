@@ -50,3 +50,20 @@ coptions = Options()
 coptions.add_extension("path/to/extension/file.crx")
 driver = webdriver.Chrome(chrome_options=coptions)
 
+
+
+
+#adding proxy to selenium 
+proxy = "40.114.121.235"
+port = 3128
+
+fp = webdriver.FirefoxProfile()
+fp.set_preference('network.proxy.ssl_port', int(port))
+fp.set_preference('network.proxy.ssl', proxy)
+fp.set_preference('network.proxy.http_port', int(port))
+fp.set_preference('network.proxy.http', proxy)
+fp.set_preference('network.proxy.type', 1)
+
+browser = webdriver.Firefox(firefox_profile=fp)
+
+
