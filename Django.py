@@ -81,8 +81,16 @@ def index(request):
   #4-in the templates index.htnml insert the template variables in the body of html as
   {{ insert_me }}#syntax of templates variables
   
+ #we can also use templates tags or variables for injecting static files like pics and css javascript 
+ #we will make a direcory folder "statics" in src and then we will make an entry in the project of that director 
   
-  
+ #steps 
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS = [STATIC_DIR,]#add with the static url in setting.py
+{% load staticfiles %}#place this code in the html under doctype tag
+<img src="{% static "images/Z.jpeg" %}" alt="oh fuck">#this is how we can add static content now 
+
+
     
  
 
