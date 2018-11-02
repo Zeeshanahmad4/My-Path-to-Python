@@ -1,27 +1,18 @@
 # making a virtual env for dejango
-
-
 #comands for windows
 
  pip install virtualenv                     #install virtual env
 
-
  mkdir dir_name
  cd dir_name
-
-
+ 
 virtualenv -p python3                       #make dir virtualenv
-
 
 
 .\Scripts\activate                           #activating env
 
 
-
-
 pip install django==1.11.5                  #installing django
-
-
 
 
 django-admin startproject project_name #starting your first project
@@ -30,10 +21,19 @@ django-admin startproject project_name #starting your first project
 python3 manage.py runserver #run this to see your project on server make sure you are in right directory
 
 
-
 python3 manage.py startapp nameofapp #running first app
 
+#linux installation
 
+
+https://www.codingforentrepreneurs.com/blog/install-django-on-linux-ubuntu/
+#activating env
+
+source path/bin/activate
+
+
+
+ 
 
 
 
@@ -74,7 +74,7 @@ urlpatterns = [
   
   'DIRS': [TEMPLATES_DIR,]#in Templates in setting.py file 
       #3-comeback to views.py of firs_app inject code
-    
+from django.http import HttpResponse
 def index(request):
     my_dict = {'insert_me':"hello i am from ttemplates firstapp index"}#this is the templates variable i.e dynamic content
     return render(request,'first_app/index.html',context=my_dict)
