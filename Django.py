@@ -1,74 +1,58 @@
-# making a virtual env for dejango
-#comands for windows
-
- pip install virtualenv                     #install virtual env
-
- mkdir dir_name
- cd dir_name
+#making a virtual env for dejango
+#comands for linux and windows
+#https://www.codingforentrepreneurs.com/blog/install-django-on-linux-ubuntu/
  
-virtualenv -p python3                       #make dir virtualenv
+mkdir venv && cd venv
+virtualenv .
+source bin/activate                                               .\Scripts\activate    # for windows activation
+pip install django
+django-admin startproject testpro3
+django-admin startapp testapp3
 
+"""
+Things 2 do's after setting up project
+1.add app name to the seeting.py file in installed app
+2.add this to views.py file"""
+from django.http import HttpResponse
+def index(request):
+    return HttpResponse("zeeshan")
+  
+ 
 
-.\Scripts\activate                           #activating env
-
-
-pip install django==1.11.5                  #installing django
-
-
-django-admin startproject project_name #starting your first project
-
-
-python3 manage.py runserver #run this to see your project on server make sure you are in right directory
-
-
-python3 manage.py startapp nameofapp #running first app
-
-#linux installation
-
-
-https://www.codingforentrepreneurs.com/blog/install-django-on-linux-ubuntu/
-#activating env
-
-source path/bin/activate
+""""
+project own url maping
+steps
+1.add this to project urls"""
+from firstapp import views
+url(r'^$',views.index,name='index'),
 
 
 
  
-
-
-
-
-
-#url mapping 
-#application can have his own url mapping whihc we can call from urlpattrens which
-
-#step one
-
+"""
+url mapping through apps 
+application can have his own url mapping whihc we can call from urlpattrens which
+step 1"""
 from django.conf.urls import include
-url(r'^mynewextension/',include('firstapp.urls'))#add into project url patterens 
+url(r'^',include('firstapp.urls'))#add into project url patterens 
 
 #step 2
-
 #creal a urls.py file in app folder and add this into it 
-
 from django.conf.urls import url
 from firstapp import views
-
-
 urlpatterns = [
     url(r'^$', views.index, name='index'),
 ]
-#done url mapping is complete your new url for this app is http://127.0.0.1:8000/mynewextension/
+#done url mapping is complete your new url for this app is http://127.0.0.1:8000/
   
   
   
   
-  
- #making new templates and templates tags
- 
- #steps 
-       #1-creating a dict name "Tamplates" in the same dic in which project and first_app is held and put index.html file there
-       #2-enter the details in project setting.py about your templates injecting code in the setting.py
+ """ 
+ making new templates and templates tags
+ steps 
+       1-creating a dict name "Tamplates" in the same dic in which project and first_app is held and put index.html file there
+       2-enter the details in project setting.py about your templates injecting code in the setting.py"""
   import os
   TEMPLATES_DIR = os.path.join (BASE_DIR,"templates")
   
