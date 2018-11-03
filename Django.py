@@ -78,4 +78,7 @@ STATICFILES_DIRS = [STATIC_DIR,]#add with the static url in setting.py
     
  
 
+THINGS I STUCK OFF FOR A WHILE
 
+1.not adding my name in the app folder
+2.not changing names of files when copy code from referance code
