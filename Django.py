@@ -72,11 +72,56 @@ def index(request):
 STATIC_DIR = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [STATIC_DIR,]#add with the static url in setting.py
 {% load staticfiles %}#place this code in the html under doctype tag
-<img src="{% static "images/Z.jpeg" %}" alt="oh fuck">#this is how we can add static content now 
+<img src="{% static "images/Z.jpeg" %}" alt="oh fuck">#this is how we can add static content now
 
 
+
+#creating models and setting admin panel 
+#steps
+1.#creat classes for models in models.py of app file i created 3 class for 3 models.
+from django.db import models
+class Topic(models.Model):
+    top_name = models.CharField(max_length =264 ,unique = True)
+
+    def __str__(self):
+        return self.top_name
     
+class Webpage(models.Model):
+    topic = models.ForeignKey(Topic)
+    name = models.CharField(max_length = 264,unique = True)
+    url = models.URLField(unique = True)
+
+    def __str__(self):
+        return self.name 
+
+class AccssRecord(models.Model):
+    name = models.ForeignKey(Webpage)
+    date = models.DateField()
+
+    def __str__(self):
+        return str(self.date)
+
+#step 2 do migration 
+python manage.py migrate
+
+#step 3 register your models in admin file of the app 
+from django.contrib import admin
+from firstapp.models import Topic, Webpage, AccssRecord
+admin.site.register(AccssRecord )
+admin.site.register(Webpage)
+admin.site.register(Topic)
+
+#steps 4 migrates your app this time
+python manage.py makemigrations firstapp
+python manage.py migrate#again migration
  
+#step 5 creating first super user 
+python manage.py createsuperuser
+#give name and password
+#finish by 
+python manage.py runserver
+
+
 
 THINGS I STUCK OFF FOR A WHILE
 
