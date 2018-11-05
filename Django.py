@@ -16,7 +16,8 @@ Things 2 do's after setting up project
 from django.http import HttpResponse
 def index(request):
     return HttpResponse("zeeshan")
-  
+3.templates tagging is white space senstive
+
  
 
 """"
@@ -190,10 +191,45 @@ if __name__ == '__main__':
 
 
 
+#RELATIVES URLS
+#STEPS
+#make sure to define func in the views.py 
+#1.make the desire dic and the desire files in htat dics
+#2.project urls.py
+
+from django.conf.urls import url,include
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.index,name = 'index'),#main page
+    url(r'^basic_app/',include('first_app.urls')),#telling that look in the app urls.py the variable *basic_app and includes frist app urls
+]
+#3.app urls.py
+from django.conf.urls import url
+from first_app import views
 
 
+app_name = 'first_app'#the urls varibales *
 
+urlpatterns = [
+url(r'^relatives/$',views.rel,name = 'relatives'),
+url(r'^other/$', views.other, name='other')
+]
 
+#4.in the html 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hello World HTML</title>
+</head>
+
+<body>
+    <h1>Hello World reltive</h1>
+    <a href="{% url 'first_app:other' %}">the rel page</a># looking for urls varibales * and then other 
+</body>
+
+</html>
 
 
 
