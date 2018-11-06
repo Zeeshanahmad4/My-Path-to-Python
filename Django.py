@@ -16,24 +16,24 @@ Things 2 do's after setting up project
 from django.http import HttpResponse
 def index(request):
     return HttpResponse("zeeshan")
-3.templates tagging is white space senstive
+
 
  
 
-""""
-project own url maping
-steps
-1.add this to project urls"""
+
+#project own url maping
+#steps
+#1.add this to project urls"""
 from firstapp import views
 url(r'^$',views.index,name='index'),
 
 
 
  
-"""
-url mapping through apps 
-application can have his own url mapping whihc we can call from urlpattrens which
-step 1"""
+
+#url mapping through apps 
+#application can have his own url mapping whihc we can call from urlpattrens which
+#step 1"""
 from django.conf.urls import include
 url(r'^',include('firstapp.urls'))#add into project url patterens 
 
@@ -235,19 +235,23 @@ url(r'^other/$', views.other, name='other')
 
 
 
+#Temoplates inheritance
+#steps
+#1.add this soce snipts after the code which you want to inhert this is the parent file 
 
+    {% block body_block %}
+    {# Anything outside of this will be inherited if you use extend.#}
+    {% endblock %}
+    
+#2.sytax of the child file will be following 
+<!DOCTYPE html>
+{% extends "basic_app/base.html" %}#parent app tag 
+    {% block body_block%}#child own html will goes here
 
+    <h1>Hello and welcome to the site!</h1>
+    <h1>This is the index.html page</h1>
 
-
-
-
-
-
-
-
-
-
-
+    {% endblock %}
 
 
 
@@ -258,4 +262,5 @@ url(r'^other/$', views.other, name='other')
 THINGS I STUCK OFF FOR A WHILE
 
 1.not adding my name in the app folder
+3.templates tagging is white space senstive
 2.not changing names of files when copy code from referance code
