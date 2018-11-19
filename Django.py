@@ -317,11 +317,74 @@ url(r'^formpage/',views.form_fun,name="form_page")
 
 
      
+ #connecting forms and models
+     
+ #forms.py  
+ 
+ from django import forms
+from appTwo.models import User
+
+class NewUserForm(forms.ModelForm):#this form model is connected to the model user which we import from apptwo.models
+    class Meta():
+        model = User
+        fields = '__all__'
      
      
- #end of django forms
+#in models.py
+ 
+ from django.db import models
+
+# Create your models here.
+class User(models.Model):
+    first_name = models.CharField(max_length=128)
+    last_name = models.CharField(max_length=128)
+    email = models.EmailField(max_length=254,unique=True)
+
+#in views 
+ 
      
+ from django.shortcuts import render
+from appTwo.forms import NewUserForm
+# Create your views here.
+
+def index(request):
+    return render(request,'apptwo/index.html')
+
+def users(request):
+    form = NewUserForm()#form instant
+
+
+    if request.method == 'POST':#if user make post
+        form = NewUserForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)#return user to index
+        else:
+            print("ERROR!")
+
+    return render(request,'appTwo/users.html',{'form':form})
+
      
+ 
+     
+   #in forms.html
+   <body>
+    <h1>Please Sign Up:</h1>
+    <div class="container">
+      <form method="POST">
+        {{ form.as_p }}#form tag
+        {% csrf_token %}#security token
+        <input type="submit" class='btn btn-primary' value="Submit">
+      </form>
+
+    </div>
+
+  </body>
+     
+#make sure all the url patteren is called 
+#end of connecting fomrs with models
      
 
      
@@ -364,7 +427,8 @@ class formname(forms.Form):
             raise forms.ValidationError("makesure email match")
  
 
- #end of validators     
+ #end of validators
+     #end of django forms
 THINGS I STUCK OFF FOR A WHILE
 
 1.not adding my name in the app folder
