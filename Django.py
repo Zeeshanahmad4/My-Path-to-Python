@@ -255,38 +255,82 @@ url(r'^other/$', views.other, name='other')
 
      
   
+#Djanto forms starts
+     
+ #steps
+     #step 1
+     
+ #creat a file forms.py in app and and forms.html file and give its url patteren in prject url
+     
+ #forms.html file 
+ 
+     
+  <body>
+<h1>Welcome to the Form Page!</h1>
+
+<div class="container">
+    <form action="" method="POST">
+        {{ form.as_p }}#templates tag of the django form 
+        {% csrf_token %}#token for security
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+</div>
+     
+
+     
+#forms.py this is the django form 
+from django import forms
+class formname(forms.Form):
+    name = forms.CharField()#fields
+    email = forms.EmailField()
+    varfiy_email = forms.EmailField(label="enter your email again")
+    text = forms.CharField(widget = forms.Textarea)
+     
+     
+ #views.py 
+ 
+from basicapp import forms
+
+def index(request):#home fun
+    return render (request,"basicapp/index.html")
+
+
+def form_fun(request):#form function
+    form = forms.formname()
+
+
+    if request.method == "POST":#security check
+        form = forms.formname(request.POST)
+        if form.is_valid():
+            print("Form Validation Success. Prints in console.")
+            print("Name"+form.cleaned_data['name'])
+            print("Email"+form.cleaned_data['email'])
+            print('Text'+form.cleaned_data['text'])
+
+    return render (request,"basicapp/form_page.html",{"form": form })
+     
+     
+#project url 
+    
+     
+url(r'^formpage/',views.form_fun,name="form_page")
+
+
      
      
      
+ #end of django forms
      
      
      
+
      
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-   
-   #Validators for validations
+#Validators for validations
  
 #custom validator getting value of the field as an arguments
+     
+from django.core import validators
 def check_for_z(value):
     if value[0].lower() != "z":
         raise forms.ValidationError("nAME SHOULD START WITH Z")
@@ -320,16 +364,7 @@ class formname(forms.Form):
             raise forms.ValidationError("makesure email match")
  
 
- #end of validators
-     
-     
-     
-
-
-
-
-
-
+ #end of validators     
 THINGS I STUCK OFF FOR A WHILE
 
 1.not adding my name in the app folder
