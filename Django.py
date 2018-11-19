@@ -253,6 +253,77 @@ url(r'^other/$', views.other, name='other')
 
     {% endblock %}
 
+     
+  
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+   
+   #Validators for validations
+ 
+#custom validator getting value of the field as an arguments
+def check_for_z(value):
+    if value[0].lower() != "z":
+        raise forms.ValidationError("nAME SHOULD START WITH Z")
+
+#actuall forms
+class formname(forms.Form):
+    name = forms.CharField(validators=[check_for_z])#custom validators value checking
+    email = forms.EmailField()
+    varfiy_email = forms.EmailField(label="enter your email again")
+    text = forms.CharField(widget = forms.Textarea)
+    #django bulit.in validotrs 
+    #bulit in validators calling maxlenth value checking
+    botcater = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MaxLengthValidator(0)])
+    
+
+
+
+
+#there is differrence between python 2 and 3 for referance 
+#https://stackoverflow.com/questions/43252801/overriding-clen-method-and-call-super-in-it
+    
+    
+    
+    #cleaning all the form at once  
+    def clean(self):
+        all_clean_data = super(formname,self).clean()
+        emial =all_clean_data["email"]
+        vmail = all_clean_data["varfiy_email"]
+
+        if emial != vmail:
+            raise forms.ValidationError("makesure email match")
+ 
+
+ #end of validators
+     
+     
+     
 
 
 
@@ -264,3 +335,4 @@ THINGS I STUCK OFF FOR A WHILE
 1.not adding my name in the app folder
 3.templates tagging is white space senstive
 2.not changing names of files when copy code from referance code
+4.if you can not find the syntax eroor from a given line of exception ,simply rewrite the code 
