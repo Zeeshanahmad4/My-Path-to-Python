@@ -429,6 +429,46 @@ class formname(forms.Form):
 
  #end of validators
      #end of django forms
+     
+     #CBVs class based views
+     
+     #url patteren will be like this
+     
+     url(r'^$',views.indexview.as_view()) #views classname.as_view()
+     
+     
+     #index.html
+     
+     {% extends "base.html"  %}
+
+
+
+{% block body_block%}
+
+<h1>Testing the templates</h1>
+
+<h2> injected content : {{ injecttime }}</h2>#injecting material from cbvs
+
+{% endblock %}
+     
+     #views.py (important)
+     from django.views.generic import View,TemplateView
+
+class indexview(TemplateView):#class
+    template_name = 'index.html'#vairable name is equal to file name into templates folder
+    
+
+    def get_context_data(self,**kwargs): #fun for templates taging
+        context = super(indexview, self).get_context_data(**kwargs)#syntax is diiferent in both python for super
+        context['injecttime'] = 'basic injecttion'#tagging into html
+        return context
+
+     
+     
+     
+     
+     
+     
 THINGS I STUCK OFF FOR A WHILE
 
 1.not adding my name in the app folder
