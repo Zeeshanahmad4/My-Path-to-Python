@@ -430,7 +430,7 @@ class formname(forms.Form):
  #end of validators
      #end of django forms
      
-     #CBVs class based views
+     #CBVs class based views not very usefull no listtemplates
      
      #url patteren will be like this
      
@@ -463,8 +463,168 @@ class indexview(TemplateView):#class
         context['injecttime'] = 'basic injecttion'#tagging into html
         return context
 
+     #CBVs class based views with listtemplates
+     
+     #base.html (header)
+     #making a nav bar and to links on it 
+       <body>
+    <nav class="navbar navbar-default navbar-static-top">
+        <ul class="nav navbar-nav">
+          <li><a class="navbar-brand" href="{% url 'basic_app:list' %}">Schools</a></li>#defining relative url
+          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a class="navbar-link" href="#"></a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+      {% block body_block %}
+
+      {% endblock %}
+    </div>
+
+  </body>
      
      
+     
+            #school list
+  {% extends "basic_app/basic_app_base.html" %}#inherting the html header from basic_app.html
+{% block body_block %}
+  <div class="jumbotron">
+
+    <h1>Welcome to the List of Schools Page!</h1>
+      <ol>
+        {% for school in school_list %}
+          <h2><li><a href="{{school.id}}/">{{ school }}.name}} </a></li></h2>#template tagiing for loop
+        {% endfor %}
+      </ol>
+
+  </div>
+
+
+{% endblock %}
+
+
+     
+     
+     
+ 
+     #school details.html
+     
+     {% extends "basic_app/basic_app_base.html" %}#inheriting the templates
+{% block body_block %}
+  <div class="jumbotron">
+    <h1>Welcome to the School Detail Page</h1>
+    <h2>School Details:</h2>
+    <p>Id_num: {{school_details.id}}</p>#template tagging of model school
+    <p>Name: {{ school_details }}.name}}</p>
+    <p>Principal: {{school_details.principal}}</p>
+    <p>Location: {{school_details.location}}</p>
+    <h3>Students:</h3>
+
+      {% for student in school_details.students.all %}
+        <p>{{student.name}} who is {{student.age}} years old.</p>
+      {% endfor %}
+
+  </div>
+  <div class="container">
+    <p><a class='btn btn-warning' href="{% url 'basic_app:update' pk=school_details.pk %}">Update</a></p>
+
+  </div>
+
+{% endblock %}
+     
+ 
+ 
+     #models.py
+  
+  
+  from django.db import models
+
+
+# Create your models here.
+class School(models.Model):
+    name = models.CharField(max_length=256)
+    principal = models.CharField(max_length=256)
+    location = models.CharField(max_length=256)
+
+    def __str__(self):
+        return self.name
+     
+     
+     
+     
+class Student(models.Model):
+    name = models.CharField(max_length=256)
+    age = models.PositiveIntegerField()
+    school = models.ForeignKey(School,related_name='students')
+
+    def __str__(self):
+        return self.name
+
+ 
+ 
+    #views.py
+ from django.shortcuts import render
+from django.http import HttpResponse
+from django.views.generic import (View,TemplateView,
+                                ListView,DetailView)
+from . import models
+ 
+ 
+ class IndexView(TemplateView):
+    template_name = 'index.html'
+
+    def get_context_data(self,**kwargs):#nothing special just sending data with class and templates tags ,data is basic
+        context  = super(IndexView,self).get_context_data(**kwargs)
+        context['injectme'] = "Basic Injection!"
+        return context
+       
+       
+       class SchoolListView(ListView):
+    context_object_name = 'school_l'#using in template tagging in school_list.html
+
+    #tag will creat automaticall called school_list
+    # If you don't pass in this attribute,
+    # Django will auto create a context name
+    # for you with object_list!
+    # Default would be 'school_list'
+
+    # Example of making your own:
+    # context_object_name = 'schools'
+    model = models.School
+    
+    
+    
+    class SchoolDetailView(DetailView):
+    context_object_name = 'school_details'
+    model = models.School
+    template_name = 'basic_app/school_detail.html'
+    
+    
+    #urls.py
+    
+ from django.conf.urls import url
+from basic_app import views
+
+app_name = 'basic_app'
+
+urlpatterns = [
+    url(r'^$',views.SchoolListView.as_view(),name='list'),
+    url(r'^(?P<pk>\d+)/$',views.SchoolDetailView.as_view(),name='detail'),
+
+]
+
+
+       
+       
+       
+       
+
+
+
+
+ 
+ 
      
      
      
