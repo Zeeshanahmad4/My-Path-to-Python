@@ -2,6 +2,17 @@
 #comands for linux and windows
 #https://www.codingforentrepreneurs.com/blog/install-django-on-linux-ubuntu/
  
+ #python3.5
+#install vir in linux
+apt-get install python3-venv
+#make the virual env
+sudo python3 -m venv .
+pip install django
+django-admin startproject testpro3
+django-admin startapp testapp3
+
+
+ #pyhton2.5
 mkdir venv && cd venv
 virtualenv .
 source bin/activate                                               .\Scripts\activate    # for windows activation
