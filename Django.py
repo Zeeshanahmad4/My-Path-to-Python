@@ -9,9 +9,9 @@
 #install vir in linux
 apt-get install python3-venv
 #make the virual env
-sudo python3 -m venv .
+virtualenv -p python3 .
 source bin/activate 
-pip install django
+pip install Django==2.1.3
 django-admin startproject testpro3
 django-admin startapp testapp3
 python3 manage.py runserver
@@ -22,7 +22,7 @@ python3 manage.py runserver
 
 
 
- #pyhton2.5
+ #pyhton2.5 do not use this
 mkdir venv && cd venv
 virtualenv .
 source bin/activate                                               .\Scripts\activate    # for windows activation
