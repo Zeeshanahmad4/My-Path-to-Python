@@ -2,14 +2,24 @@
 #comands for linux and windows
 #https://www.codingforentrepreneurs.com/blog/install-django-on-linux-ubuntu/
  
+ 
+ 
+ 
  #python3.5
 #install vir in linux
 apt-get install python3-venv
 #make the virual env
 sudo python3 -m venv .
+source bin/activate 
 pip install django
 django-admin startproject testpro3
 django-admin startapp testapp3
+python3 manage.py runserver
+
+
+
+
+
 
 
  #pyhton2.5
@@ -19,6 +29,7 @@ source bin/activate                                               .\Scripts\acti
 pip install django
 django-admin startproject testpro3
 django-admin startapp testapp3
+python manage.py runserver
 
 """
 Things 2 do's after setting up project
