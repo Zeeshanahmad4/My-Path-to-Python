@@ -644,8 +644,21 @@ urlpatterns = [
 
        
        
-       
-       
+    #TEMPLATES TAG FOR LOOP
+   
+   
+   
+   
+   
+   
+{% for obj in object_list %}
+
+
+{{ obj.title }}<br/>
+
+
+{% endfor %}
+
 
 
 
