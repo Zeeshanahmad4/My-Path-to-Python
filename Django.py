@@ -17,6 +17,11 @@ django-admin startapp testapp3
 python3 manage.py runserver
 
 
+#chcek django version in python 
+>>> import django
+>>> django.VERSION
+(2, 0, 0, 'final', 0)
+
 
 
 
