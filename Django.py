@@ -36,15 +36,38 @@ django-admin startproject testpro3
 django-admin startapp testapp3
 python manage.py runserver
 
-"""
-Things 2 do's after setting up project
+
+#setting paths and urls
 1.add app name to the seeting.py file in installed app
-2.add this to views.py file"""
-from django.http import HttpResponse
-def index(request):
-    return HttpResponse("zeeshan")
+
+#static files
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'firstapp/static')
 
 
+#setting media file
+#1 in setting.py
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'firstapp/media/')
+# 2 in urls.py project
+ urlpatterns = [
+    #your urls
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ 
+ 
+ #Templates files
+ 
+ 
+ 
+ TEMPLATE_DIR = os.path.join(BASE_DIR, 'firstapp/templates/firstapp')#in setting.py
+ 'DIRS': [TEMPLATE_DIR,],#in Templates list in settint.py
+ 
+
+ 
+ 
+ 
+ 
+ 
  
 
 
@@ -53,6 +76,7 @@ def index(request):
 #1.add this to project urls"""
 from firstapp import views
 url(r'^$',views.index,name='index'),
+
 
 
 
