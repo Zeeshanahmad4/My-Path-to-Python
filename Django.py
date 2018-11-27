@@ -9,7 +9,7 @@
 #install vir in linux
 apt-get install python3-venv
 #make the virual env
-virtualenv -p python3 .
+virtualenv -p python3 provide path              #i got an error using .
 source bin/activate 
 pip install Django==2.1.3
 django-admin startproject testpro3
