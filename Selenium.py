@@ -67,3 +67,6 @@ fp.set_preference('network.proxy.type', 1)
 browser = webdriver.Firefox(firefox_profile=fp)
 
 
+
+#situations were thses guys help me 
+driver.find_elements_by_tag_name("a")
