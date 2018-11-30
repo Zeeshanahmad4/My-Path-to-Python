@@ -37,7 +37,12 @@ while(match == False):
 #saving files
 urllib.urlretrieve(src, "filename.png")
 
-
+#finding elements 
+html_list = self.driver.find_element_by_id("myId")
+items = html_list.find_elements_by_tag_name("li")
+for item in items:
+    text = item.text
+    print text
 
 
 
@@ -69,4 +74,4 @@ browser = webdriver.Firefox(firefox_profile=fp)
 
 
 #situations were thses guys help me 
-driver.find_elements_by_tag_name("a")
+#1finding elements
