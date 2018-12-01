@@ -5,6 +5,9 @@ from time import sleep
 import csv
 
 
+#headless selenium firefox and chrom
+https://stackoverflow.com/questions/50414007/unable-to-invoke-firefox-headless
+
 #Handling mutliple tabs
 browser=webdriver.Firefox()
 browser.get('http:/google.com')
