@@ -54,3 +54,18 @@ def append_data(file_path, name,):
 
 #calling function
 append_data("data.csv", a,)
+
+
+
+
+#reading from csv
+with open("data.csv", "r") as csvfile:
+    reader = csv.reader(csvfile)
+    for row in reader:
+        print row
+        url = row[0]
+        driver.get(url)
+        sleep(5)
+        
+
+
