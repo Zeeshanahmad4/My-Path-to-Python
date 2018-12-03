@@ -13,6 +13,18 @@ else:
     print("Because there was no exception, else is executed")
 finally:
     print("Finally, always executed")
+    
+    
+    
+    #iterating-through-directories-with-python
+https://stackoverflow.com/questions/19587118/iterating-through-directories-with-python
+   #creating-file-and-folder-loop
+https://stackoverflow.com/questions/23678576/creating-file-and-folder-loop
+   #how-to-save-an-image-locally-using-python-whose-url-address-i-already-know
+    https://stackoverflow.com/questions/8286352/how-to-save-an-image-locally-using-python-whose-url-address-i-already-know
+    #download-file-with-urlretrieve-to-subfolder
+   https://stackoverflow.com/questions/46413651/download-file-with-urlretrieve-to-subfolder
+    
 
 
 
