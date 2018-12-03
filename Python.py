@@ -63,9 +63,28 @@ def append_data(file_path, name,):
             "paragraph": name,
 
         })
+        
+   #muliple fields csv
+def book_info(file_path, name, edition,subheading,isbn,isbn13,authors):
+    fieldnames = ['Name', 'Edition', 'Subheading', 'Isbn', 'Isbn13', 'Authors']
+
+    with open(file_path, "a") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        # writer.writeheader()
+        writer.writerow({
+            "Name": name,
+            "Edition": edition,
+            "Subheading": subheading,
+            "Isbn":isbn,
+            "Isbn13":isbn13,
+            "Authors":authors
+})
+
 
 #calling function
 append_data("data.csv", a,)
+book_info("/media/work_aholic/289AAAF29AAABC26/chegg/Soultion_html/"+str(z)+"/Book_info.csv", "Precalculus",
+                      "7th edition", "Mathematics for Calculus", "1305071751", "9781305071759", "James Stewart Lothar Redlin Saleem Watson")
 
 
 
