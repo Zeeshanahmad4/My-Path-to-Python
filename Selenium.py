@@ -74,6 +74,24 @@ fp.set_preference('network.proxy.type', 1)
 
 browser = webdriver.Firefox(firefox_profile=fp)
 
+#adding proxy from csv
+
+with open("/home/work_aholic/Testing_codes/proxys.csv", "r") as csvfile:
+    reader = csv.reader(csvfile)
+    for i in reader:
+        proxy = i[0]
+        port = int(i[1])
+
+        fp = webdriver.FirefoxProfile()
+        fp.set_preference('network.proxy.ssl_port', int(port))
+        fp.set_preference('network.proxy.ssl', proxy)
+        fp.set_preference('network.proxy.http_port', int(port))
+        fp.set_preference('network.proxy.http', proxy)
+        fp.set_preference('network.proxy.type', 1)
+
+browser = webdriver.Firefox(firefox_profile=fp)
+driver = webdriver.Firefox()
+driver.set_page_load_timeout(10000)
 
 
 #situations were thses guys help me 
