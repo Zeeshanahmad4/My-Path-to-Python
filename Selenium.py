@@ -3,6 +3,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from time import sleep
 import csv
+import re
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.action_chains import ActionChains
+
 
 
 #headless selenium firefox and chrom
@@ -19,7 +27,7 @@ browser.get('http://bing.com')
 window_before = browser.window_handles[0]
 browser.switch_to_window(window_before)
 
-
+element.send_keys(Keys.DOWN) #keys
 
 
 #scrolling window
@@ -94,5 +102,27 @@ driver = webdriver.Firefox()
 driver.set_page_load_timeout(10000)
 
 
+ActionChains(driver).move_to_element(driver.find_element_by_class_name('select-solution-span')).perform()
+driver.execute_script("arguments[0].scrollIntoView(true);", sol_player)
+
+A = driver.execute_script(
+     "document.getElementsByClassName('chzn-single').setAttribute('style', 'display:block')")
+
+#best wait in selenium
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
+delay = 20
+try:
+    myElem = WebDriverWait(driver, delay).until(
+        EC.presence_of_element_located((By.XPATH, "//*[@id='page']/div[3]/div/div[2]/div[1]/table")))
+    print "Page is ready!"
+except TimeoutException:
+    print "Loading took too much time!"
+    
+    
+    
+  driver.implicitly_wait(10) #simple wait
 #situations were thses guys help me 
 #1finding elements
