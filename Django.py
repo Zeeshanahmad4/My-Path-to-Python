@@ -686,8 +686,9 @@ urlpatterns = [
 
 
 
+#making catagories
 
- 
+ https://reinout.vanrees.org/weblog/2014/05/19/context.html
  
      
      
