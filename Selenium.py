@@ -65,9 +65,9 @@ from selenium.webdriver.chrome.options import Options
 coptions = Options()
 coptions.add_extension("path/to/extension/file.crx")
 driver = webdriver.Chrome(chrome_options=coptions)
+https://stackoverflow.com/questions/35641019/how-do-you-use-credentials-saved-by-the-browser-in-auto-login-script-in-python-2#comment58968197_35641449
 
-
-
+https://stackoverflow.com/questions/15058462/how-to-save-and-load-cookies-using-python-selenium-webdriver
 
 #adding proxy to selenium 
 proxy = "40.114.121.235"
