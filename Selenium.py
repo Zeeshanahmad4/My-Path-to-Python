@@ -26,7 +26,7 @@ sleep(3)
 browser.get('http://bing.com')
 window_before = browser.window_handles[0]
 browser.switch_to_window(window_before)
-
+browser.close()
 element.send_keys(Keys.DOWN) #keys
 
 
