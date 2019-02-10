@@ -1,7 +1,15 @@
-#!/usr/bin/env python
-# coding: utf-8
 
-# # Data Cleaning 
+#cleaning double values in csv
+import csv
+with open('finalcleaning.csv','r') as in_file, open('after cleaning.csv','w') as out_file:
+    seen = set() # set for fast O(1) amortized lookup
+    for line in in_file:
+        if line in seen: continue # skip duplicate
+
+        seen.add(line)
+        out_file.write(line)
+
+
 
 # In[ ]:
 
