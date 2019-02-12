@@ -85,8 +85,8 @@ def book_info(file_path, name, edition,subheading,isbn,isbn13,authors):
 append_data("data.csv", a,)
 book_info("/media/work_aholic/289AAAF29AAABC26/chegg/Soultion_html/"+str(z)+"/Book_info.csv", "Precalculus",
                       "7th edition", "Mathematics for Calculus", "1305071751", "9781305071759", "James Stewart Lothar Redlin Saleem Watson")
-
-
+#UnicodeEncodeError: 'ascii' codec can't encode character u'\xfc' in position 1: ordinal not in range(128)
+https://stackoverflow.com/questions/31137552/unicodeencodeerror-ascii-codec-cant-encode-character-at-special-name
 
 
 #reading from csv
