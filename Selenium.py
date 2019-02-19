@@ -126,3 +126,15 @@ except TimeoutException:
   driver.implicitly_wait(10) #simple wait
 #situations were thses guys help me 
 #1finding elements
+
+
+
+#iterating through elemnets who does not have link s
+
+post_elems = browser.find_elements_by_xpath("//*[@id='video-title']")
+print len(post_elems)
+for i in post_elems:
+    i.click()
+    sleep(5)
+    browser.back()
+    sleep(5)
