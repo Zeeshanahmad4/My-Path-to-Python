@@ -138,3 +138,7 @@ for i in post_elems:
     sleep(5)
     browser.back()
     sleep(5)
+    
+    
+#getting url of current tab 
+print browser.current_url
