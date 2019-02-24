@@ -2,6 +2,9 @@
 #knowing current dictonary
 pwd
 
+#deling files and folders 
+https://askubuntu.com/questions/217893/how-to-delete-a-non-empty-directory-in-terminal
+  
 
 
 
