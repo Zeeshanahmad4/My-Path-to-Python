@@ -13,6 +13,8 @@ zip -r compressed_filename.zip foldername
 unzip file.zip -d destination_folder
 
 
+csv viewer
+cat filename.csv
 
 
 
