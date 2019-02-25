@@ -6,6 +6,11 @@ pwd
 https://askubuntu.com/questions/217893/how-to-delete-a-non-empty-directory-in-terminal
   
 
+#Zip and Unzip
+
+zip -r compressed_filename.zip foldername
+
+unzip file.zip -d destination_folder
 
 
 
