@@ -17,6 +17,12 @@ csv viewer
 cat filename.csv
 
 
+How to fix OSError: [Errno 1] Operation not permitted (when opening file with sublime text 2)
+Ask Question
+
+
+https://askubuntu.com/questions/304254/how-to-fix-oserror-errno-1-operation-not-permitted-when-opening-file-with-su
+  
 
 
 
