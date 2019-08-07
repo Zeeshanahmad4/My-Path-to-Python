@@ -10,7 +10,8 @@ with open('finalcleaning.csv','r') as in_file, open('after cleaning.csv','w') as
         out_file.write(line)
 
 
-
+##Replace trash character in string :
+    .replace(u"chracter", " ")
 # In[ ]:
 
 
