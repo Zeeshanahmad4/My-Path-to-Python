@@ -1,1 +1,1 @@
-php artisan make:controller SiteController
+php artisan make:controller SiteController  // making controller
