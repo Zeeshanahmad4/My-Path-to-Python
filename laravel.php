@@ -8,7 +8,13 @@ composer create-project --prefer-dist laravel/laravel blog
 https://www.cloudways.com/blog/configure-virtual-host-on-windows-10-for-wordpress/
 
 #making auth
+#5.2
 php artisan make:auth
+#6
+composer require laravel/ui
+php artisan ui vue --auth
+
+
 
 php artisan make:controller SiteController  // making controller
 
