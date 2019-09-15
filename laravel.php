@@ -4,8 +4,7 @@ composer create-project --prefer-dist laravel/laravel blog
 
 
 
-
-
+#creat a virtual host for you project
 php artisan make:controller SiteController  // making controller
 
 
