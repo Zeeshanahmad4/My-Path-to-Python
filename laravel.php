@@ -13,6 +13,7 @@ php artisan make:auth
 #6
 composer require laravel/ui
 php artisan ui vue --auth
+npm install && npm run dev
 
 
 #make middleware
@@ -31,10 +32,22 @@ Route::group(['prefix' => 'backend', 'middleware' => 'admin'], function () {
 });
 
 
+#seeder
+php artisan make:migration create_users_table
+Set schema and foriegn key
+php artisan make migration
+php artisan migrate
+
 
 php artisan make:controller SiteController  // making controller
 
 
+#admin panel
+quickadmin
+
+#DATABASE 
+php artisan 
+php artisan db:seed
 after git,
 composer update
 mv .env.example .env
