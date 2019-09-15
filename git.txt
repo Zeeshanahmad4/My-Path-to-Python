@@ -1,1 +1,11 @@
 
+git charana
+make repo 
+git clone in dic:htdocs
+copy all the file into new created foldr
+git add .
+git commit -m message
+git push
+
+
+
