@@ -4,7 +4,21 @@ composer create-project --prefer-dist laravel/laravel blog
 
 
 
+
+
+                                        #Routes
+https://laravel.com/docs/5.2/routing#route-parameters
+https://laravel.com/docs/5.2/routing#named-routes
+
+
+                                        #Controller
+https://laravel.com/docs/5.2/controllers#basic-controllers
+https://laravel.com/docs/5.2/controllers#restful-resource-controllers
+route::resource('posts','PostController');
+
+
 #creat a virtual host for you project
+
 https://www.cloudways.com/blog/configure-virtual-host-on-windows-10-for-wordpress/
 
 #making auth
