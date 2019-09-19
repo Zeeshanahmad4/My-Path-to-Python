@@ -16,6 +16,19 @@ https://laravel.com/docs/5.2/controllers#basic-controllers
 https://laravel.com/docs/5.2/controllers#restful-resource-controllers
 route::resource('posts','PostController');
 
+                                        #views
+
+sending data through view
+route::get('pass/{name}/{id}/{pass}','PostController@zee');
+blade {{$name}} {{$id}} {{$pass}}
+    public function zee($name,$id,$pass){
+
+        return view('passdata',compact ('name','id', 'pass'));
+
+    }
+
+
+
 
 #creat a virtual host for you project
 
