@@ -23,6 +23,44 @@ sns.heatmap(train.isnull(),yticklabels=False,cbar=False,cmap='viridis')
 # In[ ]:
 
 
+
+
+#Json to csv
+
+import json
+import csv
+
+
+
+#function for writing tweets to csv
+def append_data(file_path, name,name2,name3):
+    fieldnames = ['paragraph','name12','name13']
+    
+    with open(file_path, "a", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        #writer.writeheader()
+        writer.writerow({
+            "paragraph": name,
+            "name12":name2,
+            "name13":name3,
+            
+        })
+
+
+user = "FactSoup"
+draft = "draft"
+with open(r'C:\Users\3amigos\Desktop\Projects\AirBnb\z.json') as json_file:
+    data = json.load(json_file)
+    for p in data:
+        print(p["nome"])
+        print(1000*"--")
+        append_data(r'C:\Users\3amigos\Desktop\Projects\AirBnb\z.csv',p["text"],user,draft)
+
+
+        
+        
+   
+
 #inspect the data for trend and try to drop the colunm whihc has more missing data and fill the data in the column which has few values
 #for average the column
 
