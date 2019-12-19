@@ -153,3 +153,87 @@ print browser.current_url
         print tag.text
  #second approch   # for tag in soup.find_all('yt-formatted-string'):
     #     print tag.text
+
+    
+    #Selenium firefox rotating proxies 
+    import requests
+from selenium import webdriver
+from selenium.webdriver.support.ui import Select
+from time import sleep
+from bs4 import BeautifulSoup
+import lxml
+import csv
+from itertools import cycle
+
+
+#-------------------------------------------------------------------------------------------------------------------
+
+
+def mozilla_change_proxy(browser,proxy):
+    
+    
+    print("Changing to :" + proxy)
+    browser.get("about:config")
+    
+    browser.find_element_by_id("warningButton").click()
+    proxy, port = str(proxy).split(":")
+    setup_script = (
+            'var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Compone'
+            'nts.interfaces.nsIPrefBranch);prefs.setIntPref("network.proxy.type", 1);'
+            'prefs.setCharPref("network.proxy.http", "' + proxy + '");prefs.setIntPref("network.proxy.http_port", "'
+            + port + '");prefs.setCharPref("network.proxy.ssl", "' + proxy + '");prefs.setIntPref'
+            '("network.proxy.ssl_port", "' + port + '");prefs.setCharPref("network.proxy.ftp", "' + proxy + '");'
+            'prefs.setIntPref("network.proxy.ftp_port", "' + port + '");')
+    browser.execute_script(setup_script)
+    sleep(1)
+
+
+#-------------------------------------------------------------------------------------------------------------------
+
+
+def get_fresh_proxies():
+    driver=webdriver.Firefox()
+    driver.get("https://free-proxy-list.net")
+    select=driver.find_element_by_xpath('//div[@id="proxylisttable_length"]//select')
+    Select(select).select_by_value('80')
+
+    proxies=[]
+    for page in range(4):  
+        pages=driver.find_elements_by_xpath('//div[@id="proxylisttable_paginate"]//ul/li/a')
+        for i in (0,1,-1,-2):
+            pages.pop(i)
+        pages[page].click()
+        sleep(3)
+        soup=BeautifulSoup(driver.page_source,'lxml')
+        trs=soup.table.tbody.find_all('tr')
+        proxies.extend([tr.td.text+':'+tr.td.next_sibling.text for tr in trs if tr.find('td',class_='hx').text=='yes'])
+    driver.close()
+
+    valid_proxies=set()
+
+    for proxy in proxies:
+        try:
+            #-------------------timeout modified----------
+            res=requests.get("https://httpbin.org/ip",proxies={"https":proxy,"http":proxy})
+            print("Worked!")
+            valid_proxies.add(proxy)
+
+        except:
+            print("Nope!")
+    return valid_proxies
+
+#-------------------------------------------------------------------------------------------------------------------
+
+
+
+def test_proxy(browser):
+    try:
+        print("running test proxy try ")
+        browser.get("https://wtfismyip.com")
+        return True
+    except:
+        print("running test proxy except ")
+        return False
+    
+#-------------------------------------------------------------------------------------------------------------------
+
