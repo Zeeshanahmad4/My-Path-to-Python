@@ -144,7 +144,12 @@ for i in post_elems:
 print browser.current_url
 
 
-
+#adding a profile into firefox
+https://stackoverflow.com/questions/50321278/how-to-load-firefox-profile-with-python-selenium
+    
+    
+    
+    
 #hidden elements that gives null values
     html = browser.page_source
     soup = BeautifulSoup(html)
