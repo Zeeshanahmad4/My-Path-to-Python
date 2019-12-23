@@ -12,6 +12,16 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 
+
+#chrome profile in selenium 
+options = webdriver.ChromeOptions()
+options.add_argument(r'user-data-dir=C:\Users\3amigos\AppData\Local\Google\Chrome\User Data')
+driver = webdriver.Chrome(executable_path=r"C:\Users\3amigos\Desktop\SourceCode\chromedriver.exe" ,chrome_options=options)
+
+
+
+
+
 # Mobile emulator
 https://sites.google.com/a/chromium.org/chromedriver/mobile-emulation
   
