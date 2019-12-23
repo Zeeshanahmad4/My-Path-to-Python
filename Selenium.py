@@ -12,7 +12,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
 
-
+# Mobile emulator
+https://sites.google.com/a/chromium.org/chromedriver/mobile-emulation
+  
 #headless selenium firefox and chrom
 https://stackoverflow.com/questions/50414007/unable-to-invoke-firefox-headless
 
