@@ -24,7 +24,24 @@ sns.heatmap(train.isnull(),yticklabels=False,cbar=False,cmap='viridis')
 
 
 
-
+#writing headers in csv 
+CSV_HEADER_CHECK=True
+def append_data(file_path, loc,tim,applic,jobfun,ind,website):
+    fieldnames = ['Location','Time','Applicants','Job function','Industry','Website']
+    global CSV_HEADER_CHECK
+    with open(file_path, "a", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        if(CSV_HEADER_CHECK):
+            writer.writeheader()
+            CSV_HEADER_CHECK=False
+        writer.writerow({
+            "Location": loc,
+            "Time":tim,
+            "Applicants":applic,
+            "Job function":jobfun,
+            "Industry":ind,
+            "Website":website
+        })
 #Json to csv
 
 import json
