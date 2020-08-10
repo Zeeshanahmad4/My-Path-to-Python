@@ -11,7 +11,7 @@ chrome.console_arg.enable-logging=true
 
 get a list of profiles
 
-url = 'https://api.multiloginapp.com/v1/profile/list/?token=4daa08da9421228d92332c35730dcf41f48b7672&mlaVersion=4.5.3&defaultMode=FAKE'
+url = 'http://localhost.multiloginapp.com:35000/api/v2/profile'
 header = {"content-type": "application/json"}
 i = 0
 while i < 6:
