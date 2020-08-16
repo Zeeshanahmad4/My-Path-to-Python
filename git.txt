@@ -60,6 +60,6 @@ git push -u origin master
 #normal push
 git push
 
-
-
+#normal pull
+git pull
 
