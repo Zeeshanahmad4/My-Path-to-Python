@@ -9,3 +9,36 @@ git push
 
 
 
+#git local
+git init
+git ad file <>
+git status
+git commit
+
+#add name and email
+git config --global user.name "Zeeshan Ahmad"
+git config --global user.email "ahmadzee26@gmail.com"
+
+
+#add file to stagging area
+add file .
+
+#removing from stagging area
+git rm cached <file name>
+
+
+full process of a commit
+git add .
+git commit -m "file name"
+
+
+#ignoreing files
+touch .gitignore
+#enter the file name in new row of gitignore
+#ignore folders
+/foldername into new line of gitignore
+all type of files
+*filetyep
+
+
+
