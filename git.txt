@@ -40,5 +40,26 @@ touch .gitignore
 all type of files
 *filetyep
 
+#brach
+git branch name
+
+#shift to new branch
+git checkout login
+
+#merging
+git merge login
+#this will merge branches login brach to master
+
+
+#setting up on github
+git remote add origin urlofrepo
+
+#push at first time
+git push -u origin master 
+
+#normal push
+git push
+
+
 
 
