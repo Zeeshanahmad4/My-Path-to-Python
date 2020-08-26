@@ -73,4 +73,5 @@ git checkout -b newBranch
 git add --all
 git commit -m "This is test branch"
 git push origin newBranch
+https://stackoverflow.com/questions/16955980/git-merge-master-into-feature-branch
 
