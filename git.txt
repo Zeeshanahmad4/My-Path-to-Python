@@ -63,3 +63,14 @@ git push
 #normal pull
 git pull
 
+
+
+
+
+#github merger
+git checkout develop
+git checkout -b newBranch
+git add --all
+git commit -m "This is test branch"
+git push origin newBranch
+
