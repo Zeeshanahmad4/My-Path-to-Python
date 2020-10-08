@@ -254,3 +254,48 @@ def test_proxy(browser):
     
 #-------------------------------------------------------------------------------------------------------------------
 
+
+# Add coockies and get coockies
+from selenium import webdriver
+import json
+from time import sleep
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+
+
+def runme():
+
+    driver = webdriver.Chrome()
+    driver.get('https://www.slader.com/home/')
+    input()
+    Cookies = driver.get_cookies()
+#     Cookies[f"{email}:{pswd}"]=cookies
+    with open("sladerCookies.json", 'w') as file:
+        json.dump(Cookies, file)
+    return driver
+
+
+# runme()
+
+
+# driver = runme()
+def runme1():
+
+    driver = webdriver.Chrome()
+    driver.get('https://www.slader.com/home/')
+
+    with open('sladerCookies.json') as file:
+        cookies = json.load(file)
+
+    for cookie in cookies:
+        driver.add_cookie(cookie)
+
+    driver.get('https://www.slader.com/home/')
+    return driver
+
+
+runme1()
+input()
+
