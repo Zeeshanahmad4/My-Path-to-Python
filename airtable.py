@@ -1,4 +1,3 @@
-
 # install it
 pip uninstall airtable
 pip install airtable-python-wrapper
@@ -17,5 +16,7 @@ for info in airtable1.get_all():
 airtable1.update(info['id'], {'Profile_name': 'Ready'})
 
 #replace whole row
+fields = {'PassangerName': 'Mike', 'Passport': 'YASD232-23'}
 airtable1.replace(record['id'], fields)
+ #or send the dic
 
