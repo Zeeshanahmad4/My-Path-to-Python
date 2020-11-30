@@ -23,25 +23,25 @@ airtable1.replace(record['id'], fields)
 
   
   #saving screen shots
-  dbx = dropbox.Dropbox('key')   
+dbx = dropbox.Dropbox(
+    'key')
 
- 
-  def saveScreenshot():
-    filename=str(random.random())[2:]+'.png'
+
+def save_screenshot(driver, profile_name, row_id):
+    filename = profile_name + ".png"
     driver.save_screenshot(f'Screenshots/{filename}')
-    with open(f'Screenshots/{filename}','rb') as file:
-        ss=file.read()
+    with open(f'Screenshots/{filename}', 'rb') as file:
+        ss = file.read()
 
-    ss=dbx.files_upload(ss,f'/{filename}',autorename=True)
+    ss = dbx.files_upload(ss, f'/{filename}', autorename=True)
 
+    ss_link = dbx.sharing_create_shared_link(f'/{filename}')
 
-    ss_link=dbx.sharing_create_shared_link(f'/{filename}')
+    ss_link = ss_link.url.replace('?dl=0', '').replace('www', 'dl')
 
-    ss_link=ss_link.url.replace('?dl=0','').replace('www','dl')
-
-    attachment=[
-          {
+    attachment = [
+        {
             "url": ss_link
-          }
-        ]
-    airtable.update(row_id,fields={'Screenshot':attachment})
+        }
+    ]
+    airtable1.update(row_id, fields={'screen_shots': attachment})
