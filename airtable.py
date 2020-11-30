@@ -20,3 +20,28 @@ fields = {'PassangerName': 'Mike', 'Passport': 'YASD232-23'}
 airtable1.replace(record['id'], fields)
  #or send the dic
 
+
+  
+  #saving screen shots
+  dbx = dropbox.Dropbox('key')   
+
+ 
+  def saveScreenshot():
+    filename=str(random.random())[2:]+'.png'
+    driver.save_screenshot(f'Screenshots/{filename}')
+    with open(f'Screenshots/{filename}','rb') as file:
+        ss=file.read()
+
+    ss=dbx.files_upload(ss,f'/{filename}',autorename=True)
+
+
+    ss_link=dbx.sharing_create_shared_link(f'/{filename}')
+
+    ss_link=ss_link.url.replace('?dl=0','').replace('www','dl')
+
+    attachment=[
+          {
+            "url": ss_link
+          }
+        ]
+    airtable.update(row_id,fields={'Screenshot':attachment})
