@@ -32,3 +32,15 @@ for restaurant in text['data']:
     print (str(c) + "," +   "1" + "," + restaurant['sid']+ "," +restaurant['name'] +  ","  +   "22/05/2020" + ","    "0"  + "," + "0")
 
 
+
+# Deleting thr ids    
+alist=[]
+response = requests.get("http://localhost.multiloginapp.com:35000/api/v2/profile")
+response = json.loads(response.content)
+for i in response:
+    alist.append(i["uuid"])
+    
+from time import sleep
+for i in alist:
+    response = requests.delete(url="http://localhost.multiloginapp.com:35000/api/v2/profile/{}".format(i))    
+    print(response)
