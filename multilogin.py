@@ -44,3 +44,7 @@ from time import sleep
 for i in alist:
     response = requests.delete(url="http://localhost.multiloginapp.com:35000/api/v2/profile/{}".format(i))    
     print(response)
+
+    
+#Other than HTTP 
+SOCKS
